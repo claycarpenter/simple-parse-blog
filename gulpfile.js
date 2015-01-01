@@ -1,3 +1,10 @@
+// Define project paths.
+// Note: all of these are relative to the project root.
+var projectPaths = {
+    scssSources: 'scss',
+    wwwRoot: 'www'
+};
+
 // Import required dependencies.
 var gulp = require('gulp'),
     browserSync = require('browser-sync'),
@@ -7,18 +14,18 @@ var gulp = require('gulp'),
 
 var browserSyncConfig = {
     server: {
-        baseDir: "./"
+        baseDir: './' + projectPaths.wwwRoot
     },
     files: [
-        "css/*.css",
-        "*.html"
+        projectPaths.wwwRoot + '/css/*.css',
+        projectPaths.wwwRoot + '/*.html'
     ]
 };
 
 gulp.task('sass', function() {
-   return gulp.src('scss/*.scss')
+   return gulp.src(projectPaths.scssSources + '/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('css'))
+        .pipe(gulp.dest(projectPaths.wwwRoot + '/css'))
         .pipe(filter('**/*.css'))
         .pipe(browserSyncReload({stream: true}));
 });
@@ -28,6 +35,6 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('default', ['sass', 'browser-sync'], function() {
-    gulp.watch('scss/*.scss', ['sass']);
+    gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
 });
 
