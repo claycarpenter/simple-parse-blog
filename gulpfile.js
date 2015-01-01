@@ -34,6 +34,13 @@ gulp.task('browser-sync', function() {
     browserSync(browserSyncConfig);
 });
 
+gulp.task('copy-vendor-js', function() {
+    gulp.src([
+        './bower_components/jquery/dist/jquery.js',
+        './bower_components/parse-js-sdk/lib/parse.js'
+    ]).pipe(gulp.dest('./www/js'));
+});
+
 gulp.task('default', ['sass', 'browser-sync'], function() {
     gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
 });
