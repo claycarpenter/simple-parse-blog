@@ -1,0 +1,26 @@
+{
+  "name": "simple-parse-blog",
+  "version": "0.0.1",
+  "description": "A simple Parse-powered blog.",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "browser-sync": "^1.8.2",
+    "gulp-filter": "^2.0.0",
+    "gulp-sass": "^1.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/claycarpenter/simple-parse-blog.git"
+  },
+  "author": "Clay Carpenter",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/claycarpenter/simple-parse-blog/issues"
+  },
+  "homepage": "https://github.com/claycarpenter/simple-parse-blog"
+}
