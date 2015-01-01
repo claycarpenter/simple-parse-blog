@@ -1,0 +1,24 @@
+{
+  "name": "simple-parse-blog",
+  "version": "0.0.1",
+  "homepage": "https://github.com/claycarpenter/simple-parse-blog",
+  "authors": [
+    "Clay Carpenter <claycarpenter@gmail.com>"
+  ],
+  "description": "Simple Parse-powered blog.",
+  "main": "index.html",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "sass-bootstrap": "~3.0.2",
+    "underscore": "~1.7.0",
+    "parse-js-sdk": "~1.3.1"
+  }
+}
