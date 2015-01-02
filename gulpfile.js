@@ -41,7 +41,9 @@ gulp.task('copy-vendor-js', function() {
     ]).pipe(gulp.dest('./www/js'));
 });
 
-gulp.task('default', ['sass', 'browser-sync'], function() {
+gulp.task('watch', function() {
     gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
 });
+
+gulp.task('default', ['sass', 'browser-sync', 'watch']);
 
