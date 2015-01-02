@@ -7,8 +7,18 @@
         <script src="/js/jquery.js"></script>
         
         <script src="/js/parse.js"></script>
+        
+        <script src="/js/app.js"></script>
     </head>
     <body>
         <h1>Simple Parse Blog</h1>
+            <h3>Blog Entries</h3>
+            <ul id="blogEntries"></ul>
+            <script type="text/template" id="blogEntryTemplate">
+              <li>
+                <b><%= get('title') %></b>
+                <%= get('content') %>
+              </li>
+            </script>
     </body>
 </html>
