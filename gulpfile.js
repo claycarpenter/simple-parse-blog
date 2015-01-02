@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync'),
     browserSyncReload = browserSync.reload,
     sass = require('gulp-sass'),
-    filter = require('gulp-filter');
+    filter = require('gulp-filter'),
+    concat = require('gulp-concat');
 
 var browserSyncConfig = {
     server: {
@@ -41,9 +42,20 @@ gulp.task('copy-vendor-js', function() {
     ]).pipe(gulp.dest('./www/js'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
+gulp.task('copy-app-js', function() {
+    gulp.src([
+        './js/main.js'
+    ])
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('./www/js'));
 });
 
-gulp.task('default', ['sass', 'browser-sync', 'watch']);
+gulp.task('copy-js', ['copy-vendor-js', 'copy-app-js']);
 
+gulp.task('watch', function() {
+    gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
+    
+    gulp.watch('js/*.js', ['copy-app-js']);
+});
+
+gulp.task('default', ['sass', 'copy-js', 'browser-sync', 'watch']);

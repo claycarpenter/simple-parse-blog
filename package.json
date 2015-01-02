@@ -5,8 +5,9 @@
   "main": "app.js",
   "dependencies": {},
   "devDependencies": {
-    "gulp": "^3.8.10",
     "browser-sync": "^1.8.2",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
     "gulp-filter": "^2.0.0",
     "gulp-sass": "^1.2.4"
   },
