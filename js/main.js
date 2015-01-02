@@ -6,7 +6,7 @@ $(document).ready(function() {
   var blogEntryTemplateSource = $('#blogEntryTemplate').text();
   console.log(blogEntryTemplateSource);
   
-  var blogEntryTemplate = _.template(blogEntryTemplateSource);
+  var blogEntryTemplate = Parse._.template(blogEntryTemplateSource);
 
   // Define the models.
   var Blog = Parse.Object.extend('Blog');
