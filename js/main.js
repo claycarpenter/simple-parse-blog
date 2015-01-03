@@ -16,20 +16,27 @@ $(document).ready(function() {
   
   var blogs = new BlogCollection();
   
-  blogs.fetch({
+    var query = new Parse.Query(Blog);
+    
+    // Sort by date
+    query.descending('updatedAt');
+    
+    query.find({
     success: function(blogs) {
       console.log('Blogs retrieved: ' + blogs.length);
       
       var blogEntryContainer = $('#blogEntries');
       
-      blogs.each(function(blog) {
+      for (var i = 0; i < blogs.length; i++) {
+          var blog = blogs[i];
+          
         console.log('-- Adding blog entry [id: ' + blog.id + ', title: ' + blog.get('title') + ']');
         
         var blogEntryHtml = blogEntryTemplate(blog);
         console.log('Template generated HTML: ' + blogEntryHtml);
         
         blogEntryContainer.append(blogEntryHtml);
-      });
+      };
     }, 
     error: function(blogs, error) {
       console.log(error);
