@@ -19,7 +19,8 @@ var browserSyncConfig = {
     },
     files: [
         projectPaths.wwwRoot + '/css/*.css',
-        projectPaths.wwwRoot + '/*.html'
+        projectPaths.wwwRoot + '/*.html',
+        projectPaths.wwwRoot + '/js/*.js'
     ]
 };
 
