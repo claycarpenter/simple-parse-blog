@@ -1,7 +1,7 @@
 // Define project paths.
 // Note: all of these are relative to the project root.
 var projectPaths = {
-    scssSources: 'scss',
+    scssSources: 'src/scss',
     wwwRoot: 'www'
 };
 
@@ -54,7 +54,7 @@ gulp.task('copy-vendor-js', function() {
 
 gulp.task('copy-app-js', function() {
     gulp.src([
-        './js/main.js'
+        './src/js/main.js'
     ])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('./www/js'));
@@ -62,10 +62,17 @@ gulp.task('copy-app-js', function() {
 
 gulp.task('copy-js', ['copy-vendor-js', 'copy-app-js']);
 
+gulp.task('copy-html', function() {
+   gulp.src(['./src/html/**/*.html'])
+        .pipe(gulp.dest('./www/'));
+});
+
 gulp.task('watch', function() {
     gulp.watch(projectPaths.scssSources + '/*.scss', ['sass']);
     
-    gulp.watch('js/*.js', ['copy-app-js']);
+    gulp.watch('src/js/*.js', ['copy-app-js']);
+    
+    gulp.watch('src/html/**/*.html', ['copy-html']);
 });
 
-gulp.task('default', ['sass', 'copy-js', 'browser-sync', 'watch']);
+gulp.task('default', ['sass', 'copy-js', 'copy-html', 'browser-sync', 'watch']);
