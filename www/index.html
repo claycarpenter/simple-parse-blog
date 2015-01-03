@@ -14,13 +14,21 @@
     </head>
     <body>
         <h1>Simple Parse Blog</h1>
-            <h3>Blog Entries</h3>
-            <ul id="blogEntries"></ul>
-            <script type="text/template" id="blogEntryTemplate">
-              <li>
-                <b><%= get('title') %></b>
-                <%= get('content') %>
-              </li>
-            </script>
+            
+        <h2>Posts</h2>
+        
+        <div id="blogEntries"></div>
+        
+        <script type="text/template" id="blogEntryTemplate">
+            <article>
+                <h3><%= get('title') %></h3>
+                
+                <time datetime="<%= updatedAt %>">
+                    <%= updatedAt %>
+                </time>
+                
+                <%= marked(get('content')) %>
+            </article>
+        </script>
     </body>
 </html>
