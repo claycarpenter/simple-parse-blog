@@ -45,7 +45,10 @@ gulp.task('copy-vendor-js', function() {
         './bower_components/parse-js-sdk/lib/parse.js',
         
         // Marked (Markdown processor
-        './node_modules/marked/lib/marked.js'
+        './node_modules/marked/lib/marked.js',
+        
+        // Dateformat (date formatting helper)
+        './node_modules/dateformat/lib/dateformat.js'
     ]).pipe(gulp.dest('./www/js'));
 });
 
