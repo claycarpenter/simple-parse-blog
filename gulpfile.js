@@ -49,7 +49,7 @@ gulp.task('copy-vendor-js', function() {
         
         // Dateformat (date formatting helper)
         './node_modules/dateformat/lib/dateformat.js'
-    ]).pipe(gulp.dest('./www/js'));
+    ]).pipe(gulp.dest('./www/js/lib'));
 });
 
 gulp.task('copy-app-js', function() {
