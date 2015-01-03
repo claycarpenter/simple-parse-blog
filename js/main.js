@@ -4,7 +4,6 @@ $(document).ready(function() {
 
   // Create templates
   var blogEntryTemplateSource = $('#blogEntryTemplate').text();
-  console.log(blogEntryTemplateSource);
   
   var blogEntryTemplate = Parse._.template(blogEntryTemplateSource);
 
@@ -18,7 +17,7 @@ $(document).ready(function() {
   
     var query = new Parse.Query(Blog);
     
-    // Sort by date
+    // Sort by date (descending; most recent post at top)
     query.descending('updatedAt');
     
     query.find({
@@ -29,13 +28,10 @@ $(document).ready(function() {
       
       for (var i = 0; i < blogs.length; i++) {
           var blog = blogs[i];
+        
+          var blogEntryHtml = blogEntryTemplate(blog);
           
-        console.log('-- Adding blog entry [id: ' + blog.id + ', title: ' + blog.get('title') + ']');
-        
-        var blogEntryHtml = blogEntryTemplate(blog);
-        console.log('Template generated HTML: ' + blogEntryHtml);
-        
-        blogEntryContainer.append(blogEntryHtml);
+          blogEntryContainer.append(blogEntryHtml);
       };
     }, 
     error: function(blogs, error) {
