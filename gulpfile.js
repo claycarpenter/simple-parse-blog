@@ -37,8 +37,14 @@ gulp.task('browser-sync', function() {
 
 gulp.task('copy-vendor-js', function() {
     gulp.src([
+        // Jquery
         './bower_components/jquery/dist/jquery.js',
-        './bower_components/parse-js-sdk/lib/parse.js'
+        
+        // Parse SDK
+        './bower_components/parse-js-sdk/lib/parse.js',
+        
+        // Marked (Markdown processor
+        './node_modules/marked/lib/marked.js'
     ]).pipe(gulp.dest('./www/js'));
 });
 
