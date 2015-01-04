@@ -2,7 +2,28 @@
 // Note: all of these are relative to the project root.
 var projectPaths = {
     scssSources: 'src/scss',
-    wwwRoot: 'www'
+    wwwRoot: 'www',
+    javaScripts: {
+        vendor: {
+            // List of vendor/third-party JS libraries.
+            files: [
+                // Jquery
+                './bower_components/jquery/dist/jquery.js',
+
+                // Parse SDK
+                './bower_components/parse-js-sdk/lib/parse.js',
+
+                // Marked (Markdown processor
+                './node_modules/marked/lib/marked.js',
+
+                // Dateformat (date formatting helper)
+                './node_modules/dateformat/lib/dateformat.js'
+            ],
+            
+            // Target directory to place vendor JS libs in.
+            targetDir: './www/js/lib'
+        }
+    }
 };
 
 // Import required dependencies.
@@ -37,19 +58,8 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('copy-vendor-js', function() {
-    gulp.src([
-        // Jquery
-        './bower_components/jquery/dist/jquery.js',
-        
-        // Parse SDK
-        './bower_components/parse-js-sdk/lib/parse.js',
-        
-        // Marked (Markdown processor
-        './node_modules/marked/lib/marked.js',
-        
-        // Dateformat (date formatting helper)
-        './node_modules/dateformat/lib/dateformat.js'
-    ]).pipe(gulp.dest('./www/js/lib'));
+    gulp.src(projectPaths.javaScripts.vendor.files)
+        .pipe(gulp.dest(projectPaths.javaScripts.vendor.targetDir));
 });
 
 gulp.task('copy-app-js', function() {
