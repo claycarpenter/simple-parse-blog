@@ -21,7 +21,9 @@ var projectPaths = {
             ],
             
             // Target directory to place vendor JS libs in.
-            targetDir: './www/js/lib'
+            concatFile: 'vendor.js',
+            
+            concatTargetDir: './www/js/'
         }
     }
 };
@@ -59,7 +61,8 @@ gulp.task('browser-sync', function() {
 
 gulp.task('copy-vendor-js', function() {
     gulp.src(projectPaths.javaScripts.vendor.files)
-        .pipe(gulp.dest(projectPaths.javaScripts.vendor.targetDir));
+        .pipe(concat(projectPaths.javaScripts.vendor.concatFile))
+        .pipe(gulp.dest(projectPaths.javaScripts.vendor.concatTargetDir));
 });
 
 gulp.task('copy-app-js', function() {
