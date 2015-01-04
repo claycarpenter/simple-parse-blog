@@ -20,9 +20,20 @@ var projectPaths = {
                 './node_modules/dateformat/lib/dateformat.js'
             ],
             
-            // Target directory to place vendor JS libs in.
-            concatFile: 'vendor.js',
+            // Target directory and filename for concatenated JS vendor 
+            // lib script.
+            concatFile: 'vendor.js',            
+            concatTargetDir: './www/js/'
+        },
+        app: {
+            // List of app JS scripts.
+            files: [
+                // Main app logic. App init point.
+                './src/js/main.js'
+            ],
             
+            // Target directory and filename for concatenated app JS script.
+            concatFile: 'app.js',            
             concatTargetDir: './www/js/'
         }
     }
@@ -66,11 +77,9 @@ gulp.task('copy-vendor-js', function() {
 });
 
 gulp.task('copy-app-js', function() {
-    gulp.src([
-        './src/js/main.js'
-    ])
-    .pipe(concat('app.js'))
-    .pipe(gulp.dest('./www/js'));
+    gulp.src(projectPaths.javaScripts.app.files)
+        .pipe(concat(projectPaths.javaScripts.app.concatFile))
+        .pipe(gulp.dest(projectPaths.javaScripts.app.concatTargetDir));
 });
 
 gulp.task('copy-js', ['copy-vendor-js', 'copy-app-js']);
